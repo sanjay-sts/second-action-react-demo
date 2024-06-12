@@ -1,0 +1,22 @@
+name: Test Project
+
+on: push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code
+              uses: actions/checkout@v3
+              with:
+                repository: ${{ github.repository }}
+            - name: install nodejs
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18
+            - name: install dependency
+              run: npm ci
+            - name: run test
+              run: npm test
+
+              
+              
